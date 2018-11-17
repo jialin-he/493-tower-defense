@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+   <style type="text/css">
+
+   </style>
+    <title>trytry</title>
+
+    <!---- javascript includes --->
+    <!---- open license with citation to dougx.net--->
+    <script type="text/javascript" src="move_monster.js"> </script>
+     <script type="text/javascript" src="building.js"> </script>
+     <script type="text/javascript" src="grid.js"> </script>
+     <script type="text/javascript" src="map.js"> </script>
+    <script type="text/javascript">
+
+
+      var grid_size;
+      var grid_num = 10;
+      var monsterList = new Array();
+      var buildingList = new Array();
+      var canvas;
+      var ctx;
+      var map;
+      var if_build_status = true;
+      var selected_building = null;
+      var selected_grid = null;
+      var buildingType = {
+        type1:{
+          power: 10,
+          radius: 50
+        },
+        type2:{
+          power: 20,
+          radius: 60
+        },
+        type3:{
+          power:50,
+          radius:50
+        }
+      };
+      var monsterType = {
+        type1: {
+          speed: 1,
+          blood: 100
+        },
+        type2: {
+          speed: 5,
+          blood: 50
+        },
+        type3:{
+          speed: 10,
+          blood: 100
+        }
+      }
+
+      function place_building(e, clicked){
+        if(!if_build_status)return;
+        var x = e.clientX;
+        var y = e.clientY;
+        var cx = parseInt(x/grid_size);
+        var cy = parseInt(y/grid_size);
+        selected_grid = map.grid_List[cx][cy];
+        if(clicked){
+          generate_building(cx*grid_size, cy*grid_size, buildingType.type1);
+        }
+      }
+
+      function clear_select_grid(){
+        selected_grid = null;
+      }
+
+
+      function loop(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            var remainingMonsters = new Array();
+
+                   for (var i = 0; i < monsterList.length; ++i)
+                   {
+                      if (monsterList[i].render())
+                      {
+                         remainingMonsters.push(monsterList[i]);
+                      }
+                      else delete monsterList[i];
+                   }
+                   delete monsterList;
+                   monsterList = remainingMonsters;
+
+                   for(var i = 0; i < buildingList.length; i++){
+                    buildingList[i].render();
+                   }
+                   if(selected_grid){
+                    selected_grid.highlight();
+                   }
+          }
+
+      function main(){
+          canvas = document.getElementById('canvas');
+          ctx = canvas.getContext('2d');
+          grid_size = canvas.width / grid_num;
+          map = new map();
+          generate_monster(10, 10, monsterType.type1);
+          setInterval(loop, 50);
+      }
+
+
+    </script>
+
+    <style type="text/css">
+      canvas { border: 1px solid black; background:"images/bg.jpg"; }
+    </style>
+  </head>
+
+  <!--- bodyLoaded() follows resource loading and starts the splash screen 
+                     and can be found in the Loader.js file --->
+
+  <body onload="main();">
+
+  <table cellpadding="0" border="0" cellspacing="0" frame="void">
+  <tr> 
+    <td valign="top">
+
+      <canvas onmousemove = "place_building(event, false)" 
+      onmousedown= "place_building(event, true)" 
+      onmouseout = "clear_select_grid()"
+      align="left" id="canvas" width="550" height="550">
+      <H2 align="center">
+      Firefox, Opera, Chrome or other HTML5 compliant browser required.
+      <br>
+      </H2>
+      </canvas>
+    </td>
+   <tr>
+	<table>	
+
+  <img id="monster-1" src="images/monster-1.png">
+  <img id="monster-2" src="images/monster-2.png">
+  <img id="monster-3" src="images/monster-3.png">
+  <img id="building" src="images/building.png">
+
+				
+  </body>
+</html>
+
