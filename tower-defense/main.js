@@ -15,7 +15,7 @@ var current_wave = 0;
 var buildingType = [
   {
     imgId: 'building-0',
-    power: 10,
+    power: 1,
     radius: 50,
     price: 50
   },
@@ -48,6 +48,9 @@ var monsterType = [
 ];
 
 function buyBuilding(e) {
+  if (if_build_status){
+    current_money += buildingType[selected_building].price;
+  }
   selected_building = parseInt(this.getAttribute('id'));
   if (current_money < buildingType[selected_building].price) {
     document.getElementById("warning").style.display = '';
@@ -104,6 +107,7 @@ function loop(){
 
              for(var i = 0; i < buildingList.length; i++){
               buildingList[i].render();
+              buildingList[i].kill_monster();
              }
              if(selected_grid){
               selected_grid.highlight();
