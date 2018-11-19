@@ -42,7 +42,7 @@ Monster.prototype.render = function()
 
 Monster.prototype.move = function()
 {
-
+	this.x += 1;
 
 
 }

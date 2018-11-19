@@ -8,7 +8,7 @@ var map;
 var if_build_status = false;
 var selected_building = null;
 var selected_grid = null;
-
+var current_frame = 0;
 var current_money = 300;
 var score = 0;
 var current_wave = 0;
@@ -105,11 +105,20 @@ function clear_select_grid(){
 
 
 function loop(){
+      current_frame++;
+      if(current_frame == 100){
+          current_frame = 0;
+          if(monsterList.length < 10){
+            generate_monster(10, 10, monsterType[0]);
+          }
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       var remainingMonsters = new Array();
 
              for (var i = 0; i < monsterList.length; ++i)
              {
+                console.log(monsterList);
+                monsterList[i].move();
                 if (monsterList[i].render())
                 {
                    remainingMonsters.push(monsterList[i]);
@@ -133,7 +142,7 @@ function main(){
     ctx = canvas.getContext('2d');
     grid_size = canvas.width / grid_num;
     map = new map();
-    generate_monster(10, 10, monsterType[0]);
+    //generate_monster(10, 10, monsterType[0]);
     setInterval(loop, 50);
     document.getElementById ("0").addEventListener ("click", buyBuilding, false);
     document.getElementById ("1").addEventListener ("click", buyBuilding, false);
