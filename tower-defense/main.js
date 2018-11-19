@@ -79,9 +79,23 @@ function place_building(e, clicked){
   var cy = parseInt(y/grid_size);
   selected_grid = map.grid_List[cx][cy];
   if(clicked){
-    generate_building(cx*grid_size, cy*grid_size, buildingType[selected_building]);
-    selected_building = null;
-    if_build_status = false;
+    if(selected_grid.can_build){
+      new_building = new Building(cx*grid_size, cy*grid_size, buildingType[selected_building]);
+      selected_building = null;
+      if_build_status = false;
+      if(selected_grid.id == -1){
+        selected_grid.id = buildingList.length;
+        buildingList.push(new_building);
+      }
+      else{//Replace pre-built tower.
+        delete buildingList[selected_grid.id];
+        buildingList[selected_grid.id] = new_building;
+      }
+    }
+    else{
+      document.getElementById("warning-build").style.display = '';
+      setTimeout(function(){ document.getElementById("warning-build").style.display = 'none';}, 1000);
+    }
   }
 }
 

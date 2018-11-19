@@ -1,6 +1,6 @@
-function generate_building(x, y, type){
-	buildingList.push(new Building(x, y, type));
-}
+// function generate_building(x, y, type){
+// 	buildingList.push(new Building(x, y, type));
+// }
 
 
 function Building(x, y, type){
