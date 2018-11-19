@@ -14,17 +14,17 @@ export class StartgameComponent {
 
     private toggleTutorial() {
         if (document.getElementById('startgame-tutorialBtn').getAttribute("src") === '/assets/img/tutorialBtn0.PNG') {
-            document.getElementById('startgame-tutorialBtn').src='/assets/img/tutorialBtn1.PNG'
+            (<HTMLImageElement>(document.getElementById('startgame-tutorialBtn'))).src='/assets/img/tutorialBtn1.PNG'
         }
         else
-            document.getElementById('startgame-tutorialBtn').src='/assets/img/tutorialBtn0.PNG'
+            (<HTMLImageElement>(document.getElementById('startgame-tutorialBtn'))).src='/assets/img/tutorialBtn0.PNG'
     }
 
     private toggleStart() {
         if (document.getElementById('startgame-startBtn').getAttribute("src") === '/assets/img/startBtn0.PNG')
-            document.getElementById('startgame-startBtn').src='/assets/img/startBtn1.PNG'
+            (<HTMLImageElement>(document.getElementById('startgame-startBtn'))).src='/assets/img/startBtn1.PNG'
         else 
-            document.getElementById('startgame-startBtn').src='/assets/img/startBtn0.PNG'
+            (<HTMLImageElement>(document.getElementById('startgame-startBtn'))).src='/assets/img/startBtn0.PNG'
     }
 
     private gotoTutorial() {

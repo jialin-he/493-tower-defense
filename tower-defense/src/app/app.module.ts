@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ROUTES } from './app-routing.module';
 
@@ -18,6 +19,7 @@ import { ChoosebaseComponent } from './choosebase.component';
     ChoosebaseComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(ROUTES)
