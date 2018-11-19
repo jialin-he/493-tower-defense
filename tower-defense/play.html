@@ -5,109 +5,26 @@
 
    </style>
     <title>trytry</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
     <!---- javascript includes --->
     <!---- open license with citation to dougx.net--->
     <script type="text/javascript" src="move_monster.js"> </script>
-     <script type="text/javascript" src="building.js"> </script>
-     <script type="text/javascript" src="grid.js"> </script>
-     <script type="text/javascript" src="map.js"> </script>
-    <script type="text/javascript">
-
-
-      var grid_size;
-      var grid_num = 10;
-      var monsterList = new Array();
-      var buildingList = new Array();
-      var canvas;
-      var ctx;
-      var map;
-      var if_build_status = true;
-      var selected_building = null;
-      var selected_grid = null;
-      var buildingType = {
-        type1:{
-          power: 10,
-          radius: 50
-        },
-        type2:{
-          power: 20,
-          radius: 60
-        },
-        type3:{
-          power:50,
-          radius:50
-        }
-      };
-      var monsterType = {
-        type1: {
-          speed: 1,
-          blood: 100
-        },
-        type2: {
-          speed: 5,
-          blood: 50
-        },
-        type3:{
-          speed: 10,
-          blood: 100
-        }
-      }
-
-      function place_building(e, clicked){
-        if(!if_build_status)return;
-        var x = e.clientX;
-        var y = e.clientY;
-        var cx = parseInt(x/grid_size);
-        var cy = parseInt(y/grid_size);
-        selected_grid = map.grid_List[cx][cy];
-        if(clicked){
-          generate_building(cx*grid_size, cy*grid_size, buildingType.type1);
-        }
-      }
-
-      function clear_select_grid(){
-        selected_grid = null;
-      }
-
-
-      function loop(){
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            var remainingMonsters = new Array();
-
-                   for (var i = 0; i < monsterList.length; ++i)
-                   {
-                      if (monsterList[i].render())
-                      {
-                         remainingMonsters.push(monsterList[i]);
-                      }
-                      else delete monsterList[i];
-                   }
-                   delete monsterList;
-                   monsterList = remainingMonsters;
-
-                   for(var i = 0; i < buildingList.length; i++){
-                    buildingList[i].render();
-                   }
-                   if(selected_grid){
-                    selected_grid.highlight();
-                   }
-          }
-
-      function main(){
-          canvas = document.getElementById('canvas');
-          ctx = canvas.getContext('2d');
-          grid_size = canvas.width / grid_num;
-          map = new map();
-          generate_monster(10, 10, monsterType.type1);
-          setInterval(loop, 50);
-      }
-
-
-    </script>
+    <script type="text/javascript" src="building.js"> </script>
+    <script type="text/javascript" src="grid.js"> </script>
+    <script type="text/javascript" src="map.js"> </script>
+    <script type="text/javascript" src="main.js"></script>
 
     <style type="text/css">
-      canvas { border: 1px solid black; background:"images/bg.jpg"; }
+      canvas { border: 1px solid black; background:"src/assets/img/B_sublime.png"; position: relative; float: left;}
+      .shop { border-bottom: 6px solid brown; background-color: lightgrey; margin-left: 1px; padding-top: 10px; border-radius: 15px 15px 0px 0px;}
+      .price { text-align: center; font-size: 25px; font-family: 'Allerta Stencil', sans-serif;}
+      .panel {width: 200px; height: 550px; float: right;}
+      .title {border: 2px solid lightgrey; border-radius: 15px 15px 0px 0px; background-color: silver; padding-left: 20px; height: 20px;}
+      .board {background-color: black; border: 2px solid silver; border-radius: 0px 0px 15px 15px; height: 530px; color: lime; padding-left: 10px; border-right: 10px solid lightgrey; font-family: 'Noto Sans', sans-serif;}
     </style>
   </head>
 
@@ -115,7 +32,8 @@
                      and can be found in the Loader.js file --->
 
   <body onload="main();">
-
+  
+  <div>
   <table cellpadding="0" border="0" cellspacing="0" frame="void">
   <tr> 
     <td valign="top">
@@ -130,13 +48,73 @@
       </H2>
       </canvas>
     </td>
-   <tr>
-	<table>	
+    <td>
+        <div class="panel">
+          <div class="title">
+            <p>493 Defend Umich</p>
+          </div>
+          <div class="board">
+            <p>-493$ ./tower-defense</p>
+            <p>-bash-493$ cd Building</p><h3 style="text-align: center">EECS</h3>
+            <p>-bash-493$ cd Score</p><h3 id="score" style="text-align: center">0</h3>
+            <p>-bash-493$ cd Wave</p><h3 id="wave" style="text-align: center">Wave 1</h3>
+            <p>-bash-493$ cd Money</p><h3 id="money" style="text-align: center">$ 300</h3>
+            <br>
+            <p id="warning" style="color: red; display: none">WARNING: Not enough money</p>
+          </div>
+        </div>
+    </td>
+  </tr>
+	</table>
 
-  <img id="monster-1" src="images/monster-1.png">
-  <img id="monster-2" src="images/monster-2.png">
-  <img id="monster-3" src="images/monster-3.png">
-  <img id="building" src="images/building.png">
+  <div class="row shop" style="width: 750px">
+    <div class="col-sm-2">
+      <div class="thumbnail" style="background-color: lightgrey">
+        <img src="src/assets/img/shop.png" alt="Shop">
+        <div class="caption"><p class="price" style="color: brown">Shop:</p></div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <a href="#" data-toggle="tooltip" title="Click to buy!">
+      <div id="0" class="thumbnail">
+        <img src="src/assets/img/B_sublime.png" alt="Sublime">
+        <div class="caption"><p class="price">$ 50</p></div>
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-2">
+      <a href="#" data-toggle="tooltip" title="Click to buy!">
+      <div id="1" class="thumbnail">
+        <img src="src/assets/img/B_xcode.png" alt="Xcode">
+        <div class="caption"><p class="price">$ 100</p></div>
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-3">
+      <a href="#" data-toggle="tooltip" title="Click to buy!">
+      <div id="2" class="thumbnail">
+        <img src="src/assets/img/B_vim.png" alt="Vim">
+        <div class="caption"><p class="price">$ 200</p></div>
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-3">
+      <div id="cart" class="thumbnail" style="background-color: silver">
+        <img src="src/assets/img/cart.png" alt="Cart">
+        <div class="caption"><p class="price" style="color: brown">Return</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: none">
+    <img id="monster-1" src="src/assets/img/monster-1.png">
+    <img id="monster-2" src="src/assets/img/monster-2.png">
+    <img id="monster-3" src="src/assets/img/monster-3.png">
+    <img id="building" src="src/assets/img/building.png">
+    <img id="building-0" src="src/assets/img/B_sublime.png">
+    <img id="building-1" src="src/assets/img/B_xcode.png">
+    <img id="building-2" src="src/assets/img/B_vim.png">
+  </div>
 
 				
   </body>

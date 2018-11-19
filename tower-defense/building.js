@@ -10,7 +10,7 @@ function Building(x, y, type){
 	this.y = y;
 	this.radius = type.radius;
 	this.power = type.power;
-	this.img = document.getElementById('building');
+	this.img = document.getElementById(type.imgId);
 	this.wave = new Wave(x, y, 0);
 
 }
