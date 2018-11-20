@@ -121,6 +121,7 @@ function loop(){
           }
       }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      map.render();
       var remainingMonsters = new Array();
 
              for (var i = 0; i < monsterList.length; ++i)
