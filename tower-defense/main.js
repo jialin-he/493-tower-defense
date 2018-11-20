@@ -52,14 +52,14 @@ var route = [
   {x: 1, y: 0, tx: 275, ty: 385},
   {x: 0, y: -1, tx: 275, ty: 220},
   {x: 1, y: 0, tx: 495, ty: 220},
-  {x: 0, y: 1, tx: 495, ty: 550}
+  {x: 0, y: 1, tx: 495, ty: 495}
 ];
 
 function buyBuilding(e) {
   if (if_build_status){
     current_money += buildingType[selected_building].price;
   }
-  selected_building = parseInt(this.getAttribute('id'));
+  selected_building = parseInt(this.id);
   if (current_money < buildingType[selected_building].price) {
     document.getElementById("warning").style.display = '';
     setTimeout(function(){ document.getElementById("warning").style.display = 'none';}, 1000);
@@ -84,7 +84,7 @@ function place_building(e, clicked){
   var x = e.clientX;
   var y = e.clientY;
   var cx = parseInt(x/grid_size);
-  var cy = parseInt(y/grid_size);
+  var cy = parseInt((y-50)/grid_size);
   selected_grid = map.grid_List[cx][cy];
   if(clicked){
     if(selected_grid.can_build){
