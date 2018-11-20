@@ -11,6 +11,7 @@ var selected_grid = null;
 var current_frame = 0;
 var current_money = 300;
 var score = 0;
+var base = 100;
 var current_wave = 0;
 var buildingType = [
   {
@@ -45,6 +46,13 @@ var monsterType = [
     speed: 10,
     blood: 100
   }
+];
+var route = [
+  {x: 0, y: 1, tx: 10, ty: 385},
+  {x: 1, y: 0, tx: 275, ty: 385},
+  {x: 0, y: -1, tx: 275, ty: 220},
+  {x: 1, y: 0, tx: 495, ty: 220},
+  {x: 0, y: 1, tx: 495, ty: 550}
 ];
 
 function buyBuilding(e) {
@@ -113,11 +121,12 @@ function loop(){
           }
       }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      map.render();
       var remainingMonsters = new Array();
 
              for (var i = 0; i < monsterList.length; ++i)
              {
-                console.log(monsterList);
+                // console.log(monsterList);
                 monsterList[i].move();
                 if (monsterList[i].render())
                 {

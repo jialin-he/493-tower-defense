@@ -9,6 +9,7 @@ function Monster(x, y, type){
 	this.img = [document.getElementById('monster-1'),
 				document.getElementById('monster-2'),
 				document.getElementById('monster-3')];
+	this.index = 0;
 }
 
 function generate_monster(x, y, type){
@@ -33,8 +34,10 @@ Monster.prototype.render = function()
 		console.log("dead!");
 		current_money += 50;
 		score += 100;
+		document.getElementById("score").innerHTML = score.toString();
+		document.getElementById("money").innerHTML = "$ " + current_money.toString();
 	}
-	if(this.x < canvas.width && this.current_blood > 0)return true;
+	if(this.index < route.length && this.current_blood > 0)return true;
 	else{		
 		return false;
 	}
@@ -42,7 +45,37 @@ Monster.prototype.render = function()
 
 Monster.prototype.move = function()
 {
-	this.x += 1;
-
-
+	if (this.x == route[this.index].tx && this.y == route[this.index].ty) {
+		this.index ++;
+		if (this.index >= route.length) {
+			// arrive at base
+			base -= 20;
+			if (base == 0) {
+				alert("Game over!");
+			} else {
+				if (base == 80) {
+					document.getElementById("base").style.width = "80%";
+				}
+				else if (base == 60) {
+					document.getElementById("base").style.width = "60%";
+					document.getElementById("base").classList.remove("progress-bar-success");
+					document.getElementById("base").classList.add("progress-bar-info");
+				}
+				else if (base == 40) {
+					document.getElementById("base").style.width = "40%";
+					document.getElementById("base").classList.remove("progress-bar-info");
+					document.getElementById("base").classList.add("progress-bar-warning");
+				}
+				else {
+					document.getElementById("base").style.width = "20%";
+					document.getElementById("base").classList.remove("progress-bar-warning");
+					document.getElementById("base").classList.add("progress-bar-danger");
+				}
+			}
+			return;
+		}
+	}
+	this.x += route[this.index].x;
+	this.y += route[this.index].y;
+	return;
 }
