@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { StartgameComponent } from './startgame.component';
 import { TutorialComponent } from './tutorial.component';
 import { ChoosebaseComponent } from './choosebase.component';
+import { EECSComponent } from './eecs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartgameComponent,
     TutorialComponent,
-    ChoosebaseComponent
+    ChoosebaseComponent,
+    EECSComponent
   ],
   imports: [
     NgbModule,

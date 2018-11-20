@@ -1,10 +1,8 @@
 
-  <button type="button" class="btn btn-outline-secondary" ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" popoverTitle="Pop title">
-    Hover over me!
-  </button>
-
-
 <div style="position: relative;">
     <img width="100%" id="background" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/map.png">
-    <img *ngIf="showeecs" width="100%" id="eecs" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/eecs.png" data-container="body" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">
+    <img *ngIf="showeecs" width="100%" id="eecs" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/eecs.png">
+    <!-- <button id="popover-btn" ngbPopover="You see, I show up on hover!" triggers="mouseenter:mouseleave" popoverTitle="Pop title" popoverClass="popover"></button> -->
 </div>
+
+<eecs *ngIf="showEecsModal"  (closeModal)="showEecsModal = false"></eecs>
