@@ -9,5 +9,10 @@ export class EECSComponent {
 
     @Output()
     closeModal = new EventEmitter();
+
+    private playgame() {
+        this.closeModal.emit();
+        window.open('https://google.com');
+    }
     
 }

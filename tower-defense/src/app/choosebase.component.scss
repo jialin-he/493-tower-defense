@@ -40,8 +40,9 @@ img {
 }
 
 #popover-btn {
+    opacity: 0.3;
     position: absolute;
-    left: 200px;
-    top:200px;
+    left: 500px;
+    top:400px;
     z-index: 2000;
 }

@@ -1,0 +1,117 @@
+
+    <title>trytry</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+     <!-- javascript includes 
+     open license with citation to dougx.net -->
+    <script type="text/javascript" src="move_monster.js"> </script>
+    <script type="text/javascript" src="building.js"> </script>
+    <script type="text/javascript" src="grid.js"> </script>
+    <script type="text/javascript" src="map.js"> </script>
+    <script type="text/javascript" src="main.js"></script>
+
+    <style type="text/css">
+      canvas { border: 1px solid black; background:"src/assets/img/B_sublime.png"; position: relative; float: left;}
+      .shop { border-bottom: 6px solid brown; background-color: lightgrey; margin-left: 1px; padding-top: 10px; border-radius: 15px 15px 0px 0px;}
+      .price { text-align: center; font-size: 25px; font-family: 'Allerta Stencil', sans-serif;}
+      .panel {width: 200px; height: 550px; float: right;}
+      .title {border: 2px solid lightgrey; border-radius: 15px 15px 0px 0px; background-color: silver; padding-left: 20px; height: 20px;}
+      .board {background-color: black; border: 2px solid silver; border-radius: 0px 0px 15px 15px; height: 530px; color: lime; padding-left: 10px; border-right: 10px solid lightgrey; font-family: 'Noto Sans', sans-serif;}
+    </style>
+
+  
+
+  <div class="progress" style="width: 750px; margin-top: 10px;">
+    <div class="progress-bar progress-bar-success" id="base" role="progressbar" aria-valuenow="100"
+    aria-valuemin="0" aria-valuemax="100" style="width:100%">
+    </div>
+  </div>
+
+  <div>
+  <table cellpadding="0" border="0" cellspacing="0" frame="void">
+  <tr> 
+    <td valign="top">
+
+      <canvas onmousemove = "place_building(event, false)" 
+      onmousedown= "place_building(event, true)" 
+      onmouseout = "clear_select_grid()"
+      align="left" id="canvas" width="550" height="550">
+      <H2 align="center">
+      Firefox, Opera, Chrome or other HTML5 compliant browser required.
+      <br>
+      </H2>
+      </canvas>
+    </td>
+    <td>
+        <div class="panel">
+          <div class="title">
+            <p>493 Defend Umich</p>
+          </div>
+          <div class="board">
+            <p>-493$ ./tower-defense</p>
+            <p>-bash-493$ cd Building</p><h3 style="text-align: center">EECS</h3>
+            <p>-bash-493$ cd Score</p><h3 id="score" style="text-align: center">0</h3>
+            <p>-bash-493$ cd Wave</p><h3 id="wave" style="text-align: center">Wave 1</h3>
+            <p>-bash-493$ cd Money</p><h3 id="money" style="text-align: center">$ 300</h3>
+            <br>
+            <p id="warning" style="color: red; display: none">WARNING: Not enough money</p>
+            <p id="warning-build" style="color: red; display: none">WARNING: Grid not available</p>
+          </div>
+        </div>
+    </td>
+  </tr>
+  </table>
+
+  <div class="row shop" style="width: 750px">
+    <div class="col-sm-2">
+      <div class="thumbnail" style="background-color: lightgrey">
+        <img src="src/assets/img/shop.png" alt="Shop">
+        <div class="caption"><p class="price" style="color: brown">Shop:</p></div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <a href="#" data-toggle="tooltip" title="Click to buy!">
+      <div id="0" class="thumbnail">
+        <img src="src/assets/img/B_sublime.png" alt="Sublime">
+        <div class="caption"><p class="price">$ 50</p></div>
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-2">
+      <a href="#" data-toggle="tooltip" title="Click to buy!">
+      <div id="1" class="thumbnail">
+        <img src="src/assets/img/B_xcode.png" alt="Xcode">
+        <div class="caption"><p class="price">$ 100</p></div>
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-3">
+      <a href="#" data-toggle="tooltip" title="Click to buy!">
+      <div id="2" class="thumbnail">
+        <img src="src/assets/img/B_vim.png" alt="Vim">
+        <div class="caption"><p class="price">$ 200</p></div>
+      </div>
+      </a>
+    </div>
+    <div class="col-sm-3">
+      <div id="cart" class="thumbnail" style="background-color: silver">
+        <img src="src/assets/img/cart.png" alt="Cart">
+        <div class="caption"><p class="price" style="color: brown">Return</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: none">
+    <img id="map" src="src/assets/img/map.jpg">
+    <img id="monster-1" src="src/assets/img/monster-1.png">
+    <img id="monster-2" src="src/assets/img/monster-2.png">
+    <img id="monster-3" src="src/assets/img/monster-3.png">
+    <img id="building" src="src/assets/img/building.png">
+    <img id="building-0" src="src/assets/img/B_sublime.png">
+    <img id="building-1" src="src/assets/img/B_xcode.png">
+    <img id="building-2" src="src/assets/img/B_vim.png">
+  </div>
+
