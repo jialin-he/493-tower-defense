@@ -11,7 +11,6 @@ import { StartgameComponent } from './startgame.component';
 import { TutorialComponent } from './tutorial.component';
 import { ChoosebaseComponent } from './choosebase.component';
 import { EECSComponent } from './eecs.component';
-import { PlayGameComponent } from './play-game/play-game.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { PlayGameComponent } from './play-game/play-game.component';
     StartgameComponent,
     TutorialComponent,
     ChoosebaseComponent,
-    EECSComponent,
-    PlayGameComponent
+    EECSComponent
   ],
   imports: [
     NgbModule,
