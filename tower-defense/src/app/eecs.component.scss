@@ -1,58 +1,12 @@
-$xsmall-screen: 320px;
-$small-screen: 576px;
-$medium-screen: 768px;
-$large-screen: 992px;
 
-// Nice References
-$xsphone: $xsmall-screen;
-$phone: $small-screen;
-$tablet: $medium-screen;
-$desktop: $large-screen;
-
-// Bootstrap variable ovverides
-$btn-border-radius: 0;
-
-
-// List-Group
-$list-group-item-padding-x:      1.25rem;
-$list-group-item-padding-y:      .75rem;
-
-$list-group-border-radius: 3px;
-/**
- * Base value for vertical/horizontal padding
- *
- * @nuclide Image-Folder
- * @section Config > Spacing
- */
 $basePadding: 24px;
 
-/** @color Gray */
-$gray: #cdcdcd;
-/** @color Dark Gray */
-$dark-gray: #989898;
-/** @color Teal */
-$teal: rgb(225,232,225);
-$brightTeal: #45bfab;
-
-/** @color Orange */
 $orange: #C9510D;
-/** @color Beige */
-$beige: #d4cd98;
 
 $bgLightAccent: #f8faf8;
 $bgDefault: #fff;
 
-/**
- Brand Colors from Public Site
- */
- $blue: #0039c6;
- $green: #68ff66;
- $red: #e21c28;
- $purple: #8300e0;
- $darkGreen: #008d58;
- $yellow: #f2be19;
-
- $btnHeight: 30px;
+$btnHeight: 30px;
 
 
 .modal {
@@ -220,7 +174,7 @@ $bgDefault: #fff;
     &.disabled, &:disabled {
         pointer-events: none;
         opacity: 0.4;
-        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        -webkit-filter: grayscale(100%); 
        filter: grayscale(100%);
     }
 }
@@ -235,14 +189,11 @@ $bgDefault: #fff;
     }
 
     &:focus, &:active, &.active {
-        // filter: brightness(80%);
-        // color: white;
         background: none;
         color: #C9510D;
         outline: 5px auto -webkit-focus-ring-color;
     }
 
-    // Override Bootstrap default
     &.disabled, &:disabled {
         background: #6c757d;
         border-color: #6c757d;
