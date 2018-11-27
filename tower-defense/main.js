@@ -4,7 +4,11 @@ var monsterList = new Array();
 var buildingList = new Array();
 var canvas;
 var ctx;
+var generate_num = 0;
 var map;
+var max_wave = 3;
+var outer_frame = 0;
+var current_wave = 0;
 var if_build_status = false;
 var selected_building = null;
 var selected_grid = null;
@@ -22,14 +26,14 @@ var buildingType = [
   },
   {
     imgId: 'building-1',
-    power: 20,
+    power: 3,
     radius: 60,
     price: 100
   },
   {
     imgId: 'building-2',
-    power:50,
-    radius:50,
+    power:5,
+    radius:100,
     price: 200
   }
 ];
@@ -40,11 +44,11 @@ var monsterType = [
   },
   {
     speed: 5,
-    blood: 50
+    blood: 200
   },
   {
     speed: 10,
-    blood: 100
+    blood: 300
   }
 ];
 var route = [
@@ -55,6 +59,7 @@ var route = [
   {x: 0, y: 1, tx: 495, ty: 495}
 ];
 
+
 function buyBuilding(e) {
   if (if_build_status){
     current_money += buildingType[selected_building].price;
@@ -62,7 +67,11 @@ function buyBuilding(e) {
   selected_building = parseInt(this.id);
   if (current_money < buildingType[selected_building].price) {
     document.getElementById("warning").style.display = '';
-    setTimeout(function(){ document.getElementById("warning").style.display = 'none';}, 1000);
+    for(let i = 0; i < 2; i++){
+     setTimeout(function(){ document.getElementById("warning").style.display = 'none';}, 200+i*400);
+     setTimeout(function(){ document.getElementById("warning").style.display = '';}, 400+i*400);
+    }
+     setTimeout(function(){ document.getElementById("warning").style.display = 'none';}, 5000);
   } else {
     if_build_status = true;
     current_money -= buildingType[selected_building].price;
@@ -116,10 +125,32 @@ function loop(){
       current_frame++;
       if(current_frame == 100){
           current_frame = 0;
-          if(monsterList.length < 10){
-            generate_monster(10, 10, monsterType[0]);
+          if(generate_num < (1+current_wave)*10){
+	         generate_num++;
+            generate_monster(10, 10, monsterType[current_wave]);
           }
       }
+	
+      if(generate_num == 10*(1+current_wave)){
+    	   outer_frame++;
+    	   if(outer_frame == 1000){
+    		//When the last wave ends, wait for 1000 frames, then generate next wave.
+    		outer_frame = 0;
+    		if(1+current_wave < max_wave)
+          document.getElementById("warning-wave").style.display = '';
+          for(let i = 0; i < 2; i++){
+           setTimeout(function(){ document.getElementById("warning-wave").style.display = 'none';}, 200+i*400);
+           setTimeout(function(){ document.getElementById("warning-wave").style.display = '';}, 400+i*400);
+          }
+           setTimeout(function(){ document.getElementById("warning-wave").style.display = 'none';}, 5000);
+    			current_wave++;
+	}
+      }
+
+    if(max_wave*10 == generate_num && monsterList.length == 0){
+		alert("You win!")
+	
+	}
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       map.render();
       var remainingMonsters = new Array();

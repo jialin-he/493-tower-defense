@@ -10,6 +10,7 @@ function Building(x, y, type){
 	this.power = type.power;
 	this.img = document.getElementById(type.imgId);
 	this.wave = new Wave(x, y, 0);
+	this.frame_num = 0;
 }
 
 
@@ -49,8 +50,15 @@ Building.prototype.render = function(){
 	if(this.wave.radius == this.radius){
 		delete this.wave;
 		this.wave = new Wave(this.x, this.y, 0);
+		this.frame_num = 0;
 	}
-	this.wave.radius += 5;
+
+	if(this.wave.radius == 0){
+		this.frame_num++;
+	}
+	if(this.frame_num == 60){
+		this.wave.radius += 5;
+	}
 	ctx.beginPath();
 	ctx.arc(this.wave.x, this.wave.y, this.wave.radius,0,2*Math.PI);
 	ctx.stroke();

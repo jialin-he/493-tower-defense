@@ -75,7 +75,13 @@ Monster.prototype.move = function()
 			return;
 		}
 	}
-	this.x += route[this.index].x;
-	this.y += route[this.index].y;
+	if(Math.abs(this.speed*route[this.index].x) > Math.abs(route[this.index].tx - this.x) ){
+		this.x = route[this.index].tx;
+	}
+	else this.x +=  this.speed*route[this.index].x;
+	if(Math.abs(this.speed*route[this.index].y) > Math.abs(route[this.index].ty - this.y) ){
+		this.y = route[this.index].ty;
+	}
+	else this.y += this.speed*route[this.index].y;
 	return;
 }
