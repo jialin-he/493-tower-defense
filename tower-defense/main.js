@@ -4,7 +4,11 @@ var monsterList = new Array();
 var buildingList = new Array();
 var canvas;
 var ctx;
+var generate_num = 0;
 var map;
+var max_wave = 3;
+var outer_frame = 0;
+var current_wave = 0;
 var if_build_status = false;
 var selected_building = null;
 var selected_grid = null;
@@ -39,12 +43,12 @@ var monsterType = [
     blood: 100
   },
   {
-    speed: 5,
-    blood: 50
+    speed: 50,
+    blood: 200
   },
   {
-    speed: 10,
-    blood: 100
+    speed: 100,
+    blood: 300
   }
 ];
 var route = [
@@ -54,6 +58,7 @@ var route = [
   {x: 1, y: 0, tx: 495, ty: 220},
   {x: 0, y: 1, tx: 495, ty: 550}
 ];
+
 
 function buyBuilding(e) {
   if (if_build_status){
@@ -116,10 +121,25 @@ function loop(){
       current_frame++;
       if(current_frame == 100){
           current_frame = 0;
-          if(monsterList.length < 10){
-            generate_monster(10, 10, monsterType[0]);
+          if(generate_num < (1+current_wave)*10){
+	    generate_num++;
+            generate_monster(10, 10, monsterType[current_wave]);
           }
       }
+	
+      if(generate_num == 10*(1+current_wave)){
+	outer_frame++;
+	if(outer_frame == 1000){
+		outer_frame = 0;
+		if(1+current_wave < max_wave)
+			current_wave++;
+	}
+      }
+
+      if((1+current_wave)*10 == generate_num && monsterList.length == 0){
+		alert("You win!")
+	
+	}
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       map.render();
       var remainingMonsters = new Array();
