@@ -1,0 +1,202 @@
+
+$basePadding: 24px;
+
+$orange: #C9510D;
+
+$bgLightAccent: #f8faf8;
+$bgDefault: #fff;
+
+$btnHeight: 30px;
+
+
+.modal {
+    //display: none;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 9000;
+    overflow-y: auto;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    outline: 0;
+}
+
+.modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+    position: relative;
+    width: auto;
+    pointer-events: none;
+}
+
+.modal.show{
+	display: block !important;
+}
+
+.modal-content {
+    max-width: 500px;
+    position: relative;
+    background-color: #fefefe;
+    margin-top: 15em;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-clip: padding-box;
+    outline: 0;
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.modal-header {
+    padding: 15px !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+
+    &  button.close {
+        cursor: pointer;
+        padding: 1rem;
+        margin: -1rem -1rem -1rem auto;
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+
+        &:hover, &:active, &:focus {
+            background: none;  /** Changed in sprint 50 from #cdcdcd */
+        }
+    }
+
+    .close {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+    }
+
+    & h1, & h2, & h3, & h4{
+        position: static;
+    }
+}
+
+.modal-header {
+	padding: 2px 16px;
+    background: #fff;
+    border: none;
+}
+
+.modal-body {
+	padding: 24px;
+    background-color: #f8faf8;
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.modal-footer {
+    border: none;
+    background-color: #f8faf8;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+
+    @media(max-width: 576px) {
+        display: block !important;
+    }
+
+   & a:focus, & a:active {
+      background: #C9510D;
+    }
+
+    & .btn-secondary {
+      /* Override color and focus outline on cancel button **/
+      &:focus {
+        background: none;
+        color: #C9510D;
+        outline: 5px auto -webkit-focus-ring-color;
+      }
+        @media(max-width: 576px) {
+            display: block;
+            margin: 10px auto;
+        }
+    }
+}
+
+.modal-body .success-msg
+ {
+	font-size: 14px;
+  font-weight: bold;
+  color: #4F5557;
+}
+
+
+///////
+
+.btn, a.btn {
+    color: #fff;
+    font-size: 12px;
+    padding: 0 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: none;
+    cursor: pointer;
+    height: $btnHeight;
+    line-height: $btnHeight;
+
+    &:hover, &:focus, &:active {
+        color: #fff;
+       border-bottom: none;
+    }
+
+    &.disabled, &:disabled {
+        pointer-events: none;
+        opacity: 0.4;
+        -webkit-filter: grayscale(100%); 
+       filter: grayscale(100%);
+    }
+}
+
+.btn-secondary, a.btn-secondary {
+    background: white;
+    border: solid 1px $orange;
+    color: $orange;
+
+    &:hover {
+        background-color: $orange;
+    }
+
+    &:focus, &:active, &.active {
+        background: none;
+        color: #C9510D;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+
+    &.disabled, &:disabled {
+        background: #6c757d;
+        border-color: #6c757d;
+    }
+}
+
