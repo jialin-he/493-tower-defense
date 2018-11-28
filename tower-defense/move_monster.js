@@ -2,6 +2,8 @@ function Monster(x, y, type){
 	//Define monster
 	this.x = x;
 	this.y = y;
+	this.frozeFrame = 0;
+	this.ospeed = type.speed;
 	this.speed = type.speed;
 	this.blood = type.blood;
 	this.current_blood = type.blood;
@@ -9,6 +11,7 @@ function Monster(x, y, type){
 	this.img = [document.getElementById('monster-1'),
 				document.getElementById('monster-2'),
 				document.getElementById('monster-3')];
+	this.ice = document.getElementById('ice');
 	this.index = 0;
 }
 
@@ -23,8 +26,17 @@ Monster.prototype.render = function()
 {
 	var life_factor = this.current_blood / this.blood;
 	ctx.drawImage(this.img[this.frame_num], this.x+grid_size/10, this.y+grid_size/10);
-	this.frame_num++;
-	this.frame_num = this.frame_num % 3;
+	if (this.frozeFrame > 0) {
+		ctx.drawImage(this.ice, this.x+grid_size/10, this.y+grid_size/10);
+		this.frozeFrame++;
+		if (this.frozeFrame === 500) {
+			this.speed = this.ospeed;
+			this.frozeFrame = 0;
+		}
+	} else {
+		this.frame_num++;
+		this.frame_num = this.frame_num % 3;
+	}
 
 	ctx.fillStyle = "#000";
 	ctx.fillRect(this.x, this.y, grid_size, grid_size/10);

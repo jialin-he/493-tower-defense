@@ -39,7 +39,7 @@ var buildingType = [
 ];
 var monsterType = [
   {
-    speed: 1,
+    speed: 1.5,
     blood: 100
   },
   {
@@ -144,6 +144,7 @@ function loop(){
           }
            setTimeout(function(){ document.getElementById("warning-wave").style.display = 'none';}, 5000);
     			current_wave++;
+          document.getElementById("wave").innerHTML = "Wave " + (current_wave+1).toString();
 	}
       }
 
