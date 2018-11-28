@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'choosebase',
@@ -10,6 +11,10 @@ export class ChoosebaseComponent {
     private btnChanged = false
 
     public showEecsModal: boolean = false
+
+    constructor(
+        private router: Router
+    ){}
 
     private changeBtn(x: number, y: number) {
         let button = document.getElementById("popover-btn")
@@ -46,6 +51,10 @@ export class ChoosebaseComponent {
         else {
             this.showEecsModal = false
         }
+    }
+
+    private goBack() {
+        this.router.navigate( [ '' ] )
     }
 
 

@@ -1,4 +1,6 @@
-
+<div>
+    <img width="15%" align="left" style="margin-left:40px; margin-top:15px;cursor: pointer;" src="/assets/img/left.png" (click)="goBack()">
+</div>
 <div id="body" style="position: relative;">
     <img width="100%" id="background" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/map.png">
     <img *ngIf="showeecs" width="100%" id="eecs" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/eecs.png" >
