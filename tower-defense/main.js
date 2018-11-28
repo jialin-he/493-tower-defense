@@ -43,12 +43,12 @@ var monsterType = [
     blood: 100
   },
   {
-    speed: 5,
+    speed: 4,
     blood: 200
   },
   {
-    speed: 10,
-    blood: 300
+    speed: 8,
+    blood: 250
   }
 ];
 var route = [
@@ -133,8 +133,8 @@ function loop(){
 	
       if(generate_num == 10*(1+current_wave)){
     	   outer_frame++;
-    	   if(outer_frame == 1000){
-    		//When the last wave ends, wait for 1000 frames, then generate next wave.
+    	   if(outer_frame == 100 || monsterList.length === 0){
+    		//When the last wave ends, wait for 100 frames, then generate next wave.
     		outer_frame = 0;
     		if(1+current_wave < max_wave)
           document.getElementById("warning-wave").style.display = '';

@@ -39,7 +39,7 @@ Building.prototype.kill_monster = function(){
 		if(this.check_collision(monsterList[i])){
 			if (this.power === 3) {
 				monsterList[i].frozeFrame = 1;
-				monsterList[i].speed = monsterList[i].ospeed - 1;
+				monsterList[i].speed = monsterList[i].ospeed/2;
 			} else {
 				monsterList[i].current_blood -= this.power;
 			}
