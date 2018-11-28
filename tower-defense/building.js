@@ -37,7 +37,12 @@ Building.prototype.check_collision = function(monster){
 Building.prototype.kill_monster = function(){
 	for(var i = 0; i < monsterList.length; i++){
 		if(this.check_collision(monsterList[i])){
-			monsterList[i].current_blood -= this.power;
+			if (this.power === 3) {
+				monsterList[i].frozeFrame = 1;
+				monsterList[i].speed = monsterList[i].ospeed/2;
+			} else {
+				monsterList[i].current_blood -= this.power;
+			}
 		}
 	}
 }
