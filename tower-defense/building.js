@@ -61,7 +61,7 @@ Building.prototype.render = function(){
 	if(this.wave.radius == 0){
 		this.frame_num++;
 	}
-	if(this.frame_num == 60){
+	if(this.frame_num == 45){
 		this.wave.radius += 5;
 	}
 	ctx.beginPath();
