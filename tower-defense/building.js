@@ -10,6 +10,7 @@ function Building(x, y, type){
 	this.power = type.power;
 	this.img = document.getElementById(type.imgId);
 	this.wave = new Wave(x, y, 0);
+	this.frame_num = 44;
 }
 
 
@@ -36,7 +37,12 @@ Building.prototype.check_collision = function(monster){
 Building.prototype.kill_monster = function(){
 	for(var i = 0; i < monsterList.length; i++){
 		if(this.check_collision(monsterList[i])){
-			monsterList[i].current_blood -= this.power;
+			if (this.power === 3) {
+				monsterList[i].frozeFrame = 1;
+				monsterList[i].speed = monsterList[i].ospeed/2;
+			} else {
+				monsterList[i].current_blood -= this.power;
+			}
 		}
 	}
 }
@@ -49,8 +55,15 @@ Building.prototype.render = function(){
 	if(this.wave.radius == this.radius){
 		delete this.wave;
 		this.wave = new Wave(this.x, this.y, 0);
+		this.frame_num = 0;
 	}
-	this.wave.radius += 5;
+
+	if(this.wave.radius == 0){
+		this.frame_num++;
+	}
+	if(this.frame_num == 45){
+		this.wave.radius += 5;
+	}
 	ctx.beginPath();
 	ctx.arc(this.wave.x, this.wave.y, this.wave.radius,0,2*Math.PI);
 	ctx.stroke();

@@ -12,11 +12,12 @@ var current_wave = 0;
 var if_build_status = false;
 var selected_building = null;
 var selected_grid = null;
-var current_frame = 0;
+var current_frame = 99;
 var current_money = 300;
 var score = 0;
 var base = 100;
 var current_wave = 0;
+var game_timer = null;
 var buildingType = [
   {
     imgId: 'building-0',
@@ -26,29 +27,30 @@ var buildingType = [
   },
   {
     imgId: 'building-1',
-    power: 20,
+    power: 3,
     radius: 60,
     price: 100
   },
   {
     imgId: 'building-2',
-    power:50,
-    radius:50,
+    power:5,
+    radius:100,
     price: 200
   }
 ];
 var monsterType = [
   {
-    speed: 1,
+    speed: 1.5,
     blood: 100
   },
   {
-    speed: 50,
+
+    speed: 4,
     blood: 200
   },
   {
-    speed: 100,
-    blood: 300
+    speed: 8,
+    blood: 250
   }
 ];
 var route = [
@@ -67,7 +69,11 @@ function buyBuilding(e) {
   selected_building = parseInt(this.id);
   if (current_money < buildingType[selected_building].price) {
     document.getElementById("warning").style.display = '';
-    setTimeout(function(){ document.getElementById("warning").style.display = 'none';}, 1000);
+    for(let i = 0; i < 2; i++){
+     setTimeout(function(){ document.getElementById("warning").style.display = 'none';}, 200+i*400);
+     setTimeout(function(){ document.getElementById("warning").style.display = '';}, 400+i*400);
+    }
+     setTimeout(function(){ document.getElementById("warning").style.display = 'none';}, 5000);
   } else {
     if_build_status = true;
     current_money -= buildingType[selected_building].price;
@@ -116,30 +122,50 @@ function clear_select_grid(){
   selected_grid = null;
 }
 
+function check(){
+      if(generate_num == max_wave*10 && monsterList.length == 0){
+          clearInterval(game_timer);
+          let you_win =  document.getElementById("you-win");
+          ctx.drawImage(you_win, 0, 0);
+        }  
+      else if(base == 0){
+          clearInterval(game_timer);
+          let game_over =  document.getElementById("game-over");
+          ctx.drawImage(game_over, 0, 0);
+      }
+
+}
+
+
+
 
 function loop(){
       current_frame++;
       if(current_frame == 100){
           current_frame = 0;
           if(generate_num < (1+current_wave)*10){
-	    generate_num++;
+	            generate_num++;
             generate_monster(10, 10, monsterType[current_wave]);
           }
       }
 	
-      if(generate_num == 10*(1+current_wave)){
-	outer_frame++;
-	if(outer_frame == 1000){
-		outer_frame = 0;
-		if(1+current_wave < max_wave)
-			current_wave++;
-	}
-      }
-
       if((1+current_wave)*10 == generate_num && monsterList.length == 0){
-		alert("You win!")
-	
-	}
+    	   outer_frame++;
+    	   if(outer_frame == 100 || monsterList.length === 0){
+    		//When the last wave ends, wait for 100 frames, then generate next wave.
+    		  outer_frame = 0;
+    		  if(1+current_wave < max_wave){
+              document.getElementById("warning-wave").style.display = '';
+              for(let i = 0; i < 2; i++){
+               setTimeout(function(){ document.getElementById("warning-wave").style.display = 'none';}, 200+i*400);
+               setTimeout(function(){ document.getElementById("warning-wave").style.display = '';}, 400+i*400);
+              }
+               setTimeout(function(){ document.getElementById("warning-wave").style.display = 'none';}, 5000);
+              current_wave++;
+              document.getElementById("wave").innerHTML = "Wave " + (current_wave+1).toString();
+        }
+	     }
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       map.render();
       var remainingMonsters = new Array();
@@ -164,6 +190,7 @@ function loop(){
              if(selected_grid){
               selected_grid.highlight();
              }
+            check();
     }
 
 function main(){
@@ -172,7 +199,7 @@ function main(){
     grid_size = canvas.width / grid_num;
     map = new map();
     //generate_monster(10, 10, monsterType[0]);
-    setInterval(loop, 50);
+    game_timer = setInterval(loop, 50);
     document.getElementById ("0").addEventListener ("click", buyBuilding, false);
     document.getElementById ("1").addEventListener ("click", buyBuilding, false);
     document.getElementById ("2").addEventListener ("click", buyBuilding, false);
