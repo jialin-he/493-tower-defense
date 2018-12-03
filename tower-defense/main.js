@@ -57,7 +57,7 @@ var route = [
   {x: 1, y: 0, tx: 110, ty: 495},
   {x: 0, y: -1, tx: 110, ty: 165},
   {x: 1, y: 0, tx: 495, ty: 165},
-  {x: 0, y: -1, tx: 495, ty: 55}
+  {x: 0, y: -1, tx: 495, ty: 25}
 ];
 
 
@@ -247,5 +247,4 @@ function main(){
     document.getElementById ("1").addEventListener ("click", buyBuilding, false);
     document.getElementById ("2").addEventListener ("click", buyBuilding, false);
     document.getElementById ("cart").addEventListener ("click", returnBuilding, false);
-    document.getElementById ("leave").addEventListener ("click", closeWindow, false);
 }
