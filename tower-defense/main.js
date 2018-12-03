@@ -54,11 +54,10 @@ var monsterType = [
   }
 ];
 var route = [
-  {x: 0, y: 1, tx: 10, ty: 385},
-  {x: 1, y: 0, tx: 275, ty: 385},
-  {x: 0, y: -1, tx: 275, ty: 220},
-  {x: 1, y: 0, tx: 495, ty: 220},
-  {x: 0, y: 1, tx: 495, ty: 495}
+  {x: 1, y: 0, tx: 110, ty: 495},
+  {x: 0, y: -1, tx: 110, ty: 165},
+  {x: 1, y: 0, tx: 495, ty: 165},
+  {x: 0, y: -1, tx: 495, ty: 55}
 ];
 
 
@@ -94,11 +93,14 @@ function follow(e) {
   document.getElementById("b-" + selected_building.toString()).style.top = (e.clientY+10).toString() + "px";
 }
 
-function modify(e) {
+function modify() {
   if (!if_build_status) return;
-  document.getElementById("b-" + selected_building.toString()).style.left = (e.clientX+10).toString() + "px";
-  document.getElementById("b-" + selected_building.toString()).style.top = (e.clientY+10).toString() + "px";
+  document.getElementById("cart").style.backgroundColor = "DimGray";
+}
 
+function reset() {
+  if (!if_build_status) return;
+  document.getElementById("cart").style.backgroundColor = "silver";
 }
 
 function returnBuilding() {
@@ -107,6 +109,7 @@ function returnBuilding() {
     current_money += buildingType[selected_building].price;
 
     document.getElementById("b-" + selected_building.toString()).style.display = "none";
+    document.getElementById("cart").style.backgroundColor = "silver";
 
     document.getElementById("money").innerHTML = "$ " + current_money.toString();
     selected_building = null;
@@ -122,7 +125,7 @@ function place_building(e, clicked){
   var cy = parseInt((y-50)/grid_size);
   selected_grid = map.grid_List[cx][cy];
   if(clicked){
-    if(selected_grid.can_build){
+    if(selected_grid.can_build()){
       new_building = new Building(cx*grid_size, cy*grid_size, buildingType[selected_building]);
       
       document.getElementById("b-" + selected_building.toString()).style.display = "none";
@@ -158,6 +161,7 @@ function check(){
           document.getElementById("overstate").style.display = "";
           if (if_build_status) {
             document.getElementById("b-" + selected_building.toString()).style.display = "none";
+            if_build_status = false;
           }
         }  
       else if(base == 0){
@@ -168,6 +172,7 @@ function check(){
           document.getElementById("overstate").style.display = "";
           if (if_build_status) {
             document.getElementById("b-" + selected_building.toString()).style.display = "none";
+            if_build_status = false;
           }
       }
 
@@ -182,7 +187,7 @@ function loop(){
           current_frame = 0;
           if(generate_num < (1+current_wave)*10){
 	            generate_num++;
-            generate_monster(10, 10, monsterType[current_wave]);
+            generate_monster(10, 495, monsterType[current_wave]);
           }
       }
 	
@@ -230,6 +235,7 @@ function loop(){
             check();
     }
 
+
 function main(){
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2d');
@@ -241,4 +247,5 @@ function main(){
     document.getElementById ("1").addEventListener ("click", buyBuilding, false);
     document.getElementById ("2").addEventListener ("click", buyBuilding, false);
     document.getElementById ("cart").addEventListener ("click", returnBuilding, false);
+    document.getElementById ("leave").addEventListener ("click", closeWindow, false);
 }

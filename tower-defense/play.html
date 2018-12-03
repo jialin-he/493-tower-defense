@@ -61,9 +61,9 @@
             <p>-bash-493$ cd Wave</p><h3 id="wave" style="text-align: center">Wave 1</h3>
             <p>-bash-493$ cd Money</p><h3 id="money" style="text-align: center">$ 300</h3>
             <br>
-            <p id="warning" style="color: red; display: none">WARNING: Not enough money</p>
-            <p id="warning-build" style="color: red; display: none">WARNING: Grid not available</p>
-	    <p id="warning-wave" style="color: red; display: none">Next wave of monsters coming!</p>
+            <p id="warning" style="font-size: 20px; font-weight: bold; color: red; display: none">WARNING: Not enough money</p>
+            <p id="warning-build" style="font-size: 20px; font-weight: bold; color: red; display: none">Grid not available</p>
+	    <p id="warning-wave" style="font-size: 20px; font-weight: bold; color: red; display: none">Next wave of monsters coming!</p>
           </div>
         </div>
     </td>
@@ -102,15 +102,15 @@
       </a>
     </div>
     <div class="col-sm-3">
-      <div id="cart" class="thumbnail" style="background-color: silver">
+      <div id="cart" class="thumbnail" style="background-color: silver" onmousemove="modify()" onmouseout="reset()">
         <img src="src/assets/img/cart.png" alt="Cart">
         <div class="caption"><p class="price" style="color: brown">Refund</p></div>
       </div>
     </div>
   </div>
-  <div id="overstate" class="row" style="padding-left: 20px; width: 750px; display: none">
+  <div id="overstate" class="row" style="padding-left: 20px; width: 750px; display: ">
     <button type="button" class="btn btn-primary" onclick="window.location.reload();">Play Again</button>
-    <button type="button" class="btn btn-warning" onclick="close()">Leave Game</button>
+    <a href="http://localhost:4200/choosebase"><button id="leave" type="button" class="btn btn-warning"">Another Base</button></a>
   </div>
 
   <div style="display: none">
@@ -127,9 +127,9 @@
     <img id="game-over" src="src/assets/img/gameover.jpg">
   </div>
 
-  <img id="b-0" src="src/assets/img/B_sublime.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="modify(event)">
-  <img id="b-1" src="src/assets/img/B_frozen.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="modify(event)">
-  <img id="b-2" src="src/assets/img/B_vim.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="modify(event)">
+  <img id="b-0" src="src/assets/img/B_sublime.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="follow(event)">
+  <img id="b-1" src="src/assets/img/B_frozen.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="follow(event)">
+  <img id="b-2" src="src/assets/img/B_vim.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="follow(event)">
 
         
   </body>
