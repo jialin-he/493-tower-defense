@@ -193,7 +193,7 @@ function loop(){
 	
       if((1+current_wave)*10 == generate_num && monsterList.length == 0){
     	   outer_frame++;
-    	   if(outer_frame == 100 || monsterList.length === 0){
+    	   if(outer_frame == 80 || monsterList.length === 0){
     		//When the last wave ends, wait for 100 frames, then generate next wave.
     		  outer_frame = 0;
     		  if(1+current_wave < max_wave){
@@ -204,7 +204,7 @@ function loop(){
               }
                setTimeout(function(){ document.getElementById("warning-wave").style.display = 'none';}, 5000);
               current_wave++;
-              document.getElementById("wave").innerHTML = "Wave " + (current_wave+1).toString();
+              document.getElementById("wave").innerHTML = "Wave " + (current_wave+1).toString() + "/3";
         }
 	     }
       }
