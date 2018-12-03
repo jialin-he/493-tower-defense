@@ -50,7 +50,7 @@
       </canvas>
     </td>
     <td>
-        <div class="panel">
+        <div class="panel" onmousemove = "follow(event)">
           <div class="title">
             <p>493 Defend Umich</p>
           </div>
@@ -63,18 +63,18 @@
             <br>
             <p id="warning" style="color: red; display: none">WARNING: Not enough money</p>
             <p id="warning-build" style="color: red; display: none">WARNING: Grid not available</p>
-	    <p id="warning-wave" style="color: red; display: none">WARNING: Next wave of monsters coming!</p>
+	    <p id="warning-wave" style="color: red; display: none">Next wave of monsters coming!</p>
           </div>
         </div>
     </td>
   </tr>
   </table>
 
-  <div class="row shop" style="width: 750px">
+  <div id="shop" class="row shop" style="width: 750px" onmousemove = "follow(event)">
     <div class="col-sm-2">
       <div class="thumbnail" style="background-color: lightgrey">
-        <img src="src/assets/img/shop.png" alt="Shop">
-        <div class="caption"><p class="price" style="color: brown">Shop:</p></div>
+        <!-- <img src="src/assets/img/shop.png" alt="Shop"> -->
+        <div class="caption"><p class="price" style="color: brown">Click to shop:</p></div>
       </div>
     </div>
     <div class="col-sm-2">
@@ -104,9 +104,13 @@
     <div class="col-sm-3">
       <div id="cart" class="thumbnail" style="background-color: silver">
         <img src="src/assets/img/cart.png" alt="Cart">
-        <div class="caption"><p class="price" style="color: brown">Return</p></div>
+        <div class="caption"><p class="price" style="color: brown">Refund</p></div>
       </div>
     </div>
+  </div>
+  <div id="overstate" class="row" style="padding-left: 20px; width: 750px; display: none">
+    <button type="button" class="btn btn-primary" onclick="window.location.reload();">Play Again</button>
+    <button type="button" class="btn btn-warning" onclick="close()">Leave Game</button>
   </div>
 
   <div style="display: none">
@@ -122,6 +126,10 @@
     <img id="you-win" src="src/assets/img/youwin.jpg">
     <img id="game-over" src="src/assets/img/gameover.jpg">
   </div>
+
+  <img id="b-0" src="src/assets/img/B_sublime.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="modify(event)">
+  <img id="b-1" src="src/assets/img/B_frozen.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="modify(event)">
+  <img id="b-2" src="src/assets/img/B_vim.png" style="z-index: 100;position: absolute;left: 0; right: 0;display: none" onmousemove="modify(event)">
 
         
   </body>
