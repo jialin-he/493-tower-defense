@@ -1,11 +1,23 @@
-<div>
-    <img width="15%" align="left" style="margin-left:40px; margin-top:15px;cursor: pointer;" src="/assets/img/left.png" (click)="goBack()">
+<div class="row">
+    <div class="col-sm-12" style="margin-bottom: -54px;z-index: 1000;">
+            <img width="15%" align="left" style="z-index:50000;cursor: pointer;" src="/assets/img/left.png" (click)="goBack()">
+    </div>
 </div>
-<div id="body" style="position: relative;">
-    <img width="100%" id="background" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/map.png">
-    <img *ngIf="showeecs" width="100%" id="eecs" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/eecs.png" >
-    <ng-template #popContent ><img width="100%" style="margin:5px;" src="/assets/img/eecs.jpg"></ng-template>
-    <button id="popover-btn" style="cursor: pointer;" (click)="this.showEecsModal = true" (mouseenter)="showeecs=true" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" popoverTitle="Click to Choose EECS as Base"></button>
+<div id="body" class="row" style="padding:0;position: relative;">
+    <div class="col-sm-12" style="margin-top: -57px;">
+            <img width="100%" id="background" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/map.png">
+            <img *ngIf="showggbrown" width="100%" class="tucen" id="ggbrown" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/ggbrown.png" >
+            <img *ngIf="showeecs" width="100%" class="tucen" id="eecs" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/eecs1.png" >
+            <img *ngIf="showdow" width="100%" class="tucen" id="dow" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/dow.png" >
+            <img *ngIf="showbbb" width="100%" class="tucen" id="bbb" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/bbb.png" >
+            <img *ngIf="showstamps" width="100%" class="tucen" id="stamps" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/stamps.png" >
+            <img *ngIf="showduder" width="100%" class="tucen" id="duder" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/duder.png" >
+            <img *ngIf="showpierpont" width="100%" class="tucen" id="pierpont" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/pierpont.png" >
+            <img *ngIf="showchresler" width="100%" class="tucen" id="chresler" (mousemove)="whenHover($event)" (click)="show($event)" src="/assets/img/chresler.png" >
+            <!-- <ng-template #popContent ><img width="100%" src="/assets/img/eecs 2.jpg"></ng-template> -->
+            <!-- <button id="popover-btn" style="cursor: pointer;" (click)="this.showEecsModal = true" (mouseenter)="showeecs=true" [ngbPopover]="popContent" triggers="mouseenter:mouseleave" popoverTitle="Click to Choose EECS as Base"></button> -->
+            <!-- <button id="popover-btn" style="cursor: pointer;"  (mouseenter)="showeecs=true" [ngbPopover]="popContent"  popoverTitle="Click to Choose EECS as Base"></button> -->
+    </div>
 </div>
 
 <eecs *ngIf="showEecsModal"  (closeModal)="showEecsModal = false"></eecs>
