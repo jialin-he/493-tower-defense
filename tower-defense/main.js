@@ -62,9 +62,11 @@ var route = [
 ];
 
 
-function buyBuilding(e) {
+function buyBuilding() {
   if (if_build_status){
     current_money += buildingType[selected_building].price;
+
+    document.getElementById("b-" + selected_building.toString()).style.display = "none";
   }
   selected_building = parseInt(this.id);
   if (current_money < buildingType[selected_building].price) {
@@ -77,14 +79,35 @@ function buyBuilding(e) {
   } else {
     if_build_status = true;
     current_money -= buildingType[selected_building].price;
+
+    document.getElementById("b-" + this.id).style.display = "";
+    document.getElementById("b-" + this.id).style.left = (window.event.clientX+10).toString() + "px";
+    document.getElementById("b-" + this.id).style.top = (window.event.clientY+10).toString() + "px";
+
     document.getElementById("money").innerHTML = "$ " + current_money.toString();
   }
 }
 
-function returnBuilding(e) {
+function follow(e) {
+  if (!if_build_status) return;
+  document.getElementById("b-" + selected_building.toString()).style.left = (e.clientX+10).toString() + "px";
+  document.getElementById("b-" + selected_building.toString()).style.top = (e.clientY+10).toString() + "px";
+}
+
+function modify(e) {
+  if (!if_build_status) return;
+  document.getElementById("b-" + selected_building.toString()).style.left = (e.clientX+10).toString() + "px";
+  document.getElementById("b-" + selected_building.toString()).style.top = (e.clientY+10).toString() + "px";
+
+}
+
+function returnBuilding() {
   if (if_build_status) {
     if_build_status = false;
     current_money += buildingType[selected_building].price;
+
+    document.getElementById("b-" + selected_building.toString()).style.display = "none";
+
     document.getElementById("money").innerHTML = "$ " + current_money.toString();
     selected_building = null;
   }
@@ -92,6 +115,7 @@ function returnBuilding(e) {
 
 function place_building(e, clicked){
   if(!if_build_status)return;
+  follow(e);
   var x = e.clientX;
   var y = e.clientY;
   var cx = parseInt(x/grid_size);
@@ -100,6 +124,9 @@ function place_building(e, clicked){
   if(clicked){
     if(selected_grid.can_build){
       new_building = new Building(cx*grid_size, cy*grid_size, buildingType[selected_building]);
+      
+      document.getElementById("b-" + selected_building.toString()).style.display = "none";
+      
       selected_building = null;
       if_build_status = false;
       if(selected_grid.id == -1){
@@ -125,13 +152,23 @@ function clear_select_grid(){
 function check(){
       if(generate_num == max_wave*10 && monsterList.length == 0){
           clearInterval(game_timer);
-          let you_win =  document.getElementById("you-win");
+          let you_win = document.getElementById("you-win");
           ctx.drawImage(you_win, 0, 0);
+          document.getElementById("shop").style.display = "none";
+          document.getElementById("overstate").style.display = "";
+          if (if_build_status) {
+            document.getElementById("b-" + selected_building.toString()).style.display = "none";
+          }
         }  
       else if(base == 0){
           clearInterval(game_timer);
-          let game_over =  document.getElementById("game-over");
+          let game_over = document.getElementById("game-over");
           ctx.drawImage(game_over, 0, 0);
+          document.getElementById("shop").style.display = "none";
+          document.getElementById("overstate").style.display = "";
+          if (if_build_status) {
+            document.getElementById("b-" + selected_building.toString()).style.display = "none";
+          }
       }
 
 }
