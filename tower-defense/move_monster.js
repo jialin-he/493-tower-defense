@@ -44,7 +44,7 @@ Monster.prototype.render = function()
 	ctx.fillRect(this.x+grid_size/40, this.y+grid_size/40, life_factor*(grid_size - grid_size/20), (grid_size/10 - grid_size/20));
 	if(this.current_blood <= 0){
 		console.log("dead!");
-		current_money += 50;
+		current_money += parseInt(type.id)*50;
 		score += 100;
 		document.getElementById("score").innerHTML = score.toString();
 		document.getElementById("money").innerHTML = "$ " + current_money.toString();
