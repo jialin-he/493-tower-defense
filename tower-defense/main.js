@@ -41,16 +41,19 @@ var buildingType = [
 var monsterType = [
   {
     speed: 1.5,
-    blood: 100
+    blood: 100,
+    id: "monster-"
   },
   {
 
     speed: 4,
-    blood: 200
+    blood: 200,
+    id: "monster2-"
   },
   {
     speed: 8,
-    blood: 250
+    blood: 250,
+    id: "monster3-"
   }
 ];
 var route = [
@@ -186,17 +189,17 @@ function loop(){
       if(current_frame == 100){
           current_frame = 0;
           if(generate_num < (1+current_wave)*10){
-	            generate_num++;
+              generate_num++;
             generate_monster(10, 495, monsterType[current_wave]);
           }
       }
-	
+  
       if((1+current_wave)*10 == generate_num && monsterList.length == 0){
-    	   outer_frame++;
-    	   if(outer_frame == 80 || monsterList.length === 0){
-    		//When the last wave ends, wait for 100 frames, then generate next wave.
-    		  outer_frame = 0;
-    		  if(1+current_wave < max_wave){
+         outer_frame++;
+         if(outer_frame == 80 || monsterList.length === 0){
+        //When the last wave ends, wait for 100 frames, then generate next wave.
+          outer_frame = 0;
+          if(1+current_wave < max_wave){
               document.getElementById("warning-wave").style.display = '';
               for(let i = 0; i < 2; i++){
                setTimeout(function(){ document.getElementById("warning-wave").style.display = 'none';}, 200+i*400);
@@ -206,7 +209,7 @@ function loop(){
               current_wave++;
               document.getElementById("wave").innerHTML = "Wave " + (current_wave+1).toString() + "/3";
         }
-	     }
+       }
       }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       map.render();

@@ -8,9 +8,9 @@ function Monster(x, y, type){
 	this.blood = type.blood;
 	this.current_blood = type.blood;
 	this.frame_num = 0;
-	this.img = [document.getElementById('monster-1'),
-				document.getElementById('monster-2'),
-				document.getElementById('monster-3')];
+	this.img = [document.getElementById(type.id+'1'),
+				document.getElementById(type.id+'2'),
+				document.getElementById(type.id+'3')];
 	this.ice = document.getElementById('ice');
 	this.index = 0;
 }
