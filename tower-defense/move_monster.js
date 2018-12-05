@@ -8,9 +8,9 @@ function Monster(x, y, type){
 	this.blood = type.blood;
 	this.current_blood = type.blood;
 	this.frame_num = 0;
-	this.img = [document.getElementById('monster-1'),
-				document.getElementById('monster-2'),
-				document.getElementById('monster-3')];
+	this.img = [document.getElementById(type.id+'1'),
+				document.getElementById(type.id+'2'),
+				document.getElementById(type.id+'3')];
 	this.ice = document.getElementById('ice');
 	this.index = 0;
 }
@@ -44,7 +44,7 @@ Monster.prototype.render = function()
 	ctx.fillRect(this.x+grid_size/40, this.y+grid_size/40, life_factor*(grid_size - grid_size/20), (grid_size/10 - grid_size/20));
 	if(this.current_blood <= 0){
 		console.log("dead!");
-		current_money += 50;
+		current_money += (current_wave+1)*50;
 		score += 100;
 		document.getElementById("score").innerHTML = score.toString();
 		document.getElementById("money").innerHTML = "$ " + current_money.toString();

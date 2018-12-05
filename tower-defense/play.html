@@ -22,6 +22,8 @@
       .panel {width: 200px; height: 550px; float: right;}
       .title {border: 2px solid lightgrey; border-radius: 15px 15px 0px 0px; background-color: silver; padding-left: 20px; height: 20px;}
       .board {background-color: black; border: 2px solid silver; border-radius: 0px 0px 15px 15px; height: 530px; color: lime; padding-left: 10px; border-right: 10px solid lightgrey; font-family: 'Noto Sans', sans-serif;}
+      .againbutton {background-color: #ffcb05;}
+      .backbutton {background-color: #00274c;}
     </style>
   </head>
 
@@ -56,7 +58,7 @@
           </div>
           <div class="board">
             <p>-493$ ./tower-defense</p>
-            <p>-bash-493$ cd Building</p><h3 style="text-align: center">EECS</h3>
+            <p>-bash-493$ cd Base</p><h3 style="text-align: center">EECS Room1013</h3>
             <p>-bash-493$ cd Score</p><h3 id="score" style="text-align: center">0</h3>
             <p>-bash-493$ cd Wave</p><h3 id="wave" style="text-align: center">Wave 1/3</h3>
             <p>-bash-493$ cd Money</p><h3 id="money" style="text-align: center">$ 300</h3>
@@ -109,8 +111,8 @@
     </div>
   </div>
   <div id="overstate" class="row" style="padding-left: 20px; width: 750px; display: none">
-    <button type="button" class="btn btn-primary" onclick="window.location.reload();">Play Again</button>
-    <a href="http://localhost:4200/choosebase"><button id="leave" type="button" class="btn btn-warning"">Another Base</button></a>
+    <button type="button" class="btn btn-primary againbutton" onclick="window.location.reload();">Play Again</button>
+    <a href="http://localhost:4200/choosebase"><button id="leave" type="button" class="btn btn-warning backbutton">Another Base</button></a>
   </div>
 
   <div style="display: none">
@@ -118,6 +120,12 @@
     <img id="monster-1" src="src/assets/img/monster-1.png">
     <img id="monster-2" src="src/assets/img/monster-2.png">
     <img id="monster-3" src="src/assets/img/monster-3.png">
+    <img id="monster2-1" src="src/assets/img/monster2-1.png">
+    <img id="monster2-2" src="src/assets/img/monster2-2.png">
+    <img id="monster2-3" src="src/assets/img/monster2-3.png">
+    <img id="monster3-1" src="src/assets/img/monster3-1.png">
+    <img id="monster3-2" src="src/assets/img/monster3-2.png">
+    <img id="monster3-3" src="src/assets/img/monster3-3.png">
     <img id="ice" src="src/assets/img/ice.png">
     <img id="building" src="src/assets/img/building.png">
     <img id="building-0" src="src/assets/img/B_sublime.png">
