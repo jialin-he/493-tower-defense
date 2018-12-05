@@ -22,6 +22,8 @@
       .panel {width: 200px; height: 550px; float: right;}
       .title {border: 2px solid lightgrey; border-radius: 15px 15px 0px 0px; background-color: silver; padding-left: 20px; height: 20px;}
       .board {background-color: black; border: 2px solid silver; border-radius: 0px 0px 15px 15px; height: 530px; color: lime; padding-left: 10px; border-right: 10px solid lightgrey; font-family: 'Noto Sans', sans-serif;}
+      .againbutton {background-color: #ffcb05;}
+      .backbutton {background-color: #00274c;}
     </style>
   </head>
 
@@ -109,8 +111,8 @@
     </div>
   </div>
   <div id="overstate" class="row" style="padding-left: 20px; width: 750px; display: none">
-    <button type="button" class="btn btn-primary" onclick="window.location.reload();">Play Again</button>
-    <a href="http://localhost:4200/choosebase"><button id="leave" type="button" class="btn btn-warning"">Another Base</button></a>
+    <button type="button" class="btn btn-primary againbutton" onclick="window.location.reload();">Play Again</button>
+    <a href="http://localhost:4200/choosebase"><button id="leave" type="button" class="btn btn-warning backbutton">Another Base</button></a>
   </div>
 
   <div style="display: none">
