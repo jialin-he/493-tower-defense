@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { StartgameComponent } from './startgame.component';
 import { TutorialComponent } from './tutorial.component';
 import { ChoosebaseComponent } from './choosebase.component';
-import { EECSComponent } from './eecs.component';
+import { BuildingModalComponent } from './building-modal/building-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { EECSComponent } from './eecs.component';
     StartgameComponent,
     TutorialComponent,
     ChoosebaseComponent,
-    EECSComponent
+    BuildingModalComponent
   ],
   imports: [
     NgbModule,

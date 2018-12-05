@@ -1,16 +1,4 @@
-
-$basePadding: 24px;
-
-$orange: #C9510D;
-
-$bgLightAccent: #f8faf8;
-$bgDefault: #fff;
-
-$btnHeight: 30px;
-
-
 .modal {
-    //display: none;
     background-color: rgba(0, 0, 0, 0.55);
     z-index: 9000;
     overflow-y: auto;
@@ -49,13 +37,6 @@ $btnHeight: 30px;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    pointer-events: auto;
-    background-clip: padding-box;
-    outline: 0;
 }
 
 @-webkit-keyframes animatetop {
@@ -96,10 +77,6 @@ $btnHeight: 30px;
         color: #000;
         text-shadow: 0 1px 0 #fff;
     }
-
-    & h1, & h2, & h3, & h4{
-        position: static;
-    }
 }
 
 .modal-header {
@@ -111,8 +88,6 @@ $btnHeight: 30px;
 .modal-body {
 	padding: 24px;
     background-color: #f8faf8;
-    position: relative;
-    flex: 1 1 auto;
 }
 
 .modal-footer {
@@ -122,34 +97,13 @@ $btnHeight: 30px;
     align-items: center;
     justify-content: flex-end;
     padding: 1rem;
-
-    @media(max-width: 576px) {
-        display: block !important;
-    }
-
-   & a:focus, & a:active {
-      background: #C9510D;
-    }
-
-    & .btn-secondary {
-      /* Override color and focus outline on cancel button **/
-      &:focus {
-        background: none;
-        color: #C9510D;
-        outline: 5px auto -webkit-focus-ring-color;
-      }
-        @media(max-width: 576px) {
-            display: block;
-            margin: 10px auto;
-        }
-    }
 }
 
 .modal-body .success-msg
  {
 	font-size: 14px;
-  font-weight: bold;
-  color: #4F5557;
+    font-weight: bold;
+    color: #4F5557;
 }
 
 
@@ -163,12 +117,12 @@ $btnHeight: 30px;
     letter-spacing: 0.5px;
     border-bottom: none;
     cursor: pointer;
-    height: $btnHeight;
-    line-height: $btnHeight;
+    height: 30px;
+    line-height: 30px;
 
     &:hover, &:focus, &:active {
         color: #fff;
-       border-bottom: none;
+        border-bottom: none;
     }
 
     &.disabled, &:disabled {
@@ -181,16 +135,16 @@ $btnHeight: 30px;
 
 .btn-secondary, a.btn-secondary {
     background: white;
-    border: solid 1px $orange;
-    color: $orange;
+    border: solid 1px #00274c;
+    color: #00274c;
 
     &:hover {
-        background-color: $orange;
+        background-color: #00274c;
     }
 
     &:focus, &:active, &.active {
         background: none;
-        color: #C9510D;
+        color: #00274c;
         outline: 5px auto -webkit-focus-ring-color;
     }
 
@@ -199,4 +153,25 @@ $btnHeight: 30px;
         border-color: #6c757d;
     }
 }
+
+.genre{
+    margin: 5px;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.15);
+    border-radius: 3px;
+    border-color: #c3c3c3;
+    background-color: #f5f4f4;
+  }
+  
+  button.genre:hover {
+    background-color: #e8e8e8;
+  }
+  
+  button.genre-focus {
+    margin: 5px;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.15);
+    border-radius: 3px;
+    border-color: #c3c3c3;
+    background-color: #070794a6;
+    color:white;
+  }
 

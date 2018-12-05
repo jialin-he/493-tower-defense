@@ -23,4 +23,4 @@
     </div>
 </div>
 
-<eecs *ngIf="showEecsModal"  (closeModal)="showEecsModal = false"></eecs>
+<app-building-modal *ngIf="showModal" [info]="buildingInfo" (closeModal)="showModal = false"></app-building-modal>
