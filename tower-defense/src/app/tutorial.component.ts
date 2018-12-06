@@ -16,4 +16,12 @@ export class TutorialComponent {
         this.router.navigate( [ '' ] )
     }
 
+    private hoverin() {
+        (<HTMLImageElement>(document.getElementById('return-btn'))).src='/assets/img/left2.PNG'
+    }
+
+    private hoverout() {
+        (<HTMLImageElement>(document.getElementById('return-btn'))).src='/assets/img/left.png'
+    }
+
 }

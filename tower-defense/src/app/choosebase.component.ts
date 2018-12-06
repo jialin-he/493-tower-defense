@@ -26,6 +26,14 @@ export class ChoosebaseComponent {
         private router: Router
     ){}
 
+    private hoverin() {
+        (<HTMLImageElement>(document.getElementById('return-btn'))).src='/assets/img/left2.PNG'
+    }
+
+    private hoverout() {
+        (<HTMLImageElement>(document.getElementById('return-btn'))).src='/assets/img/left.png'
+    }
+
     private whenHover(event: any) {
         if (event.layerX >= 624 && event.layerX <= 812 && event.layerY >= 359 && event.layerY <= 498) {
             this.showeecs = true
