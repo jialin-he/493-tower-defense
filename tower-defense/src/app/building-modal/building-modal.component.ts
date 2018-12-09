@@ -28,7 +28,7 @@ export class BuildingModalComponent implements OnInit {
   private onClick() {
     if (this.info) {
       this.closeModal.emit();
-      this.openInNewTab('http://www-personal.umich.edu/~qiyueyao/index.html');
+      window.location.href = 'http://www-personal.umich.edu/~qiyueyao/index.html';
     }
   }
 

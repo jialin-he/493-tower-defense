@@ -2,150 +2,193 @@
 <html lang="en-US">
 <head>
   <title> 493 Tower Defense</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
   </title>
 </head>
 
 <body>
-<div class="container">
-  <h2><b>Features</b></h2>
-  <div class="row">
-  <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Start.png">
-        <img src="img/Start.png" alt="Start Page" style="width:100%">
-        <div class="caption">
-          <p>Simple and elegant starting page.</p>
+
+  <!-- This is the nav bar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Defend Umich</a>
         </div>
-      </a>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Tutorial.png">
-        <img src="img/Tutorial.png" alt="Tutorial" style="width:100%">
-        <div class="caption">
-          <p>Easy to understand tutorial.</p>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#need" data-toggle="tab">User Need</a></li>
+          <li><a href="#problem" data-toggle="tab">Problem</a></li>
+          <li><a href="#features" data-toggle="tab">Features</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- This is the actual page contents. -->
+    <div class="tab-content" style="margin:80px;">
+
+        <!-- This is the user need. -->
+        <!-- TODO: start your performance here, mengmeng. -->
+        <div id="need" class="tab-pane fade in active">
+           <p>These are the contents of user need </p>
         </div>
-      </a>
-    </div>
-  </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Base1.png">
-        <img src="img/Base1.png" alt="Choose the base" style="width:100%">
-        <div class="caption">
-          <p>First step is to choose the building based on your schedule.</p>
+
+        <!-- This is the problem. -->
+        <!-- TODO: start your performance here, mengmeng. -->
+        <div id="problem" class="tab-pane fade">
+           <p>These are the contents of problems </p>
         </div>
-      </a>
-    </div>
-    </div>
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Base2.png">
-        <img src="img/Base2.png" alt="Multiple bases" style="width:100%">
-        <div class="caption">
-          <p>Multiple buildings have information documented.</p>
-        </div>
-      </a>
-    </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Pop1.png">
-        <img src="img/Pop1.png" alt="Detailed information" style="width:100%">
-        <div class="caption">
-          <p>After clicking, view information and choose room.</p>
-        </div>
-      </a>
-    </div>
-    </div>
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Pop2.png">
-        <img src="img/Pop2.png" alt="Multiple classrooms" style="width:100%">
-        <div class="caption">
-          <p>Multiple rooms could be chosen correspondingly as base.</p>
-        </div>
-      </a>
-    </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Place.png">
-        <img src="img/Place.png" alt="Detailed information" style="width:100%">
-        <div class="caption">
-          <p>Click on a building and place it on the map with clear indication.</p>
-        </div>
-      </a>
-    </div>
-    </div>
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Froze.png">
-        <img src="img/Froze.png" alt="Multiple classrooms" style="width:100%">
-        <div class="caption">
-          <p>The placed building will start attacking/frozening the monsters in range.</p>
-        </div>
-      </a>
-    </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Wave2.png">
-        <img src="img/Wave2.png" alt="Detailed information" style="width:100%">
-        <div class="caption">
-          <p>Second wave of monsters are faster, plan well :)</p>
-        </div>
-      </a>
-    </div>
-    </div>
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Wave3.png">
-        <img src="img/Wave3.png" alt="Multiple classrooms" style="width:100%">
-        <div class="caption">
-          <p>Third wave of monsters are crazy, watch out =P</p>
-        </div>
-      </a>
-    </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Win.png">
-        <img src="img/Win.png" alt="Detailed information" style="width:100%">
-        <div class="caption">
-          <p>Congratulations! You could choose another base to play!</p>
-        </div>
-      </a>
-    </div>
-    </div>
-    <div class="col-md-6">
-    <div class="thumbnail display">
-      <a href="img/Gameover.png">
-        <img src="img/Gameover.png" alt="Multiple classrooms" style="width:100%">
-        <div class="caption">
-          <p>Oops! Play again to practice more maybe...</p>
-        </div>
-      </a>
-    </div>
-    </div>
-  </div>
-</div>
+
+        <!-- This is the feature page content. -->
+        <div class="container tab-pane fade" id="features">
+            <h2><b>Features</b></h2>
+            <div class="row">
+            <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Start.png">
+                  <img src="img/Start.png" alt="Start Page" style="width:100%">
+                  <div class="caption">
+                    <p>Simple and elegant starting page.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Tutorial.png">
+                  <img src="img/Tutorial.png" alt="Tutorial" style="width:100%">
+                  <div class="caption">
+                    <p>Easy to understand tutorial.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Base1.png">
+                  <img src="img/Base1.png" alt="Choose the base" style="width:100%">
+                  <div class="caption">
+                    <p>First step is to choose the building based on your schedule.</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Base2.png">
+                  <img src="img/Base2.png" alt="Multiple bases" style="width:100%">
+                  <div class="caption">
+                    <p>Multiple buildings have information documented.</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Pop1.png">
+                  <img src="img/Pop1.png" alt="Detailed information" style="width:100%">
+                  <div class="caption">
+                    <p>After clicking, view information and choose room.</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Pop2.png">
+                  <img src="img/Pop2.png" alt="Multiple classrooms" style="width:100%">
+                  <div class="caption">
+                    <p>Multiple rooms could be chosen correspondingly as base.</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Place.png">
+                  <img src="img/Place.png" alt="Detailed information" style="width:100%">
+                  <div class="caption">
+                    <p>Click on a building and place it on the map with clear indication.</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Froze.png">
+                  <img src="img/Froze.png" alt="Multiple classrooms" style="width:100%">
+                  <div class="caption">
+                    <p>The placed building will start attacking/frozening the monsters in range.</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Wave2.png">
+                  <img src="img/Wave2.png" alt="Detailed information" style="width:100%">
+                  <div class="caption">
+                    <p>Second wave of monsters are faster, plan well :)</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Wave3.png">
+                  <img src="img/Wave3.png" alt="Multiple classrooms" style="width:100%">
+                  <div class="caption">
+                    <p>Third wave of monsters are crazy, watch out =P</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Win.png">
+                  <img src="img/Win.png" alt="Detailed information" style="width:100%">
+                  <div class="caption">
+                    <p>Congratulations! You could choose another base to play!</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+              <div class="col-md-6">
+              <div class="thumbnail display">
+                <a href="img/Gameover.png">
+                  <img src="img/Gameover.png" alt="Multiple classrooms" style="width:100%">
+                  <div class="caption">
+                    <p>Oops! Play again to practice more maybe...</p>
+                  </div>
+                </a>
+              </div>
+              </div>
+            </div>
+          </div>
+      </div>
 
 
+
+<!-- This is the footer -->
 <div class="container acknowledge">
   <p>Run the Application, Download here:</p><a href="https://github.com/jialin-he/493-tower-defense"> Github Link</a><br><br>
   <p>Try out the Game, Have Fun: </p><a href="http://www-personal.umich.edu/~qiyueyao/index.html">Game page</a><br><br>
